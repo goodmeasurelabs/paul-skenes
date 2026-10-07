@@ -35,3 +35,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Cloudflare migration artifacts and local secrets
+.open-next/
+.wrangler/
+.env*
+*.private
+
+# Generated Cloudflare build output and local state.
+.worker-dry-run/
