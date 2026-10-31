@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { trackGamePlay } from '@/lib/analytics';
+import NextStepPanel from './NextStepPanel';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 type Phase = 'location' | 'speed' | 'accuracy' | 'result';
@@ -187,7 +188,7 @@ function Batter({ swing, hit, ball }: { swing: boolean; hit: boolean; ball: bool
 }
 
 // ─── Main Component ───────────────────────────────────────────────────────────
-export default function PitchingGame() {
+export default function PitchingGame({ onPlayOther }: { onPlayOther: () => void }) {
   const [phase, setPhase]           = useState<Phase>('location');
   const [selectedZone, setZone]     = useState<ZoneIdx | null>(null);
   const [speedPos, setSpeedPos]     = useState(0);
@@ -388,6 +389,8 @@ export default function PitchingGame() {
           >
             Next Pitch →
           </button>
+
+          <NextStepPanel otherGameName="Skenes Trivia" otherGameType="skenes_trivia" onPlayOther={onPlayOther} />
         </div>
       )}
     </div>
