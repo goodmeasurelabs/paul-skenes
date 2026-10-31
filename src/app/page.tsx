@@ -4,6 +4,7 @@ import NextStart from "./components/NextStart";
 import NewsFeed from "./components/NewsFeed";
 import QuickStatsOverlay from "./components/QuickStatsOverlay";
 import CTALink from "./components/CTALink";
+import QuickLinks from "./components/QuickLinks";
 import "./Skenes.css";
 
 export const metadata: Metadata = {
@@ -70,6 +71,9 @@ export default function Home() {
           <CTALink href="/game-schedule" text="See his next start →" location="home_hero" />
         </div>
       </div>
+
+      {/* Quick links to the main sections */}
+      <QuickLinks />
 
       {/* Next Game */}
       <NextStart />
