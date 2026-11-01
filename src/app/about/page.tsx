@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import NextStepLinks from "../components/NextStepLinks";
 
 export const metadata: Metadata = {
   title: "About Paul Skenes",
@@ -32,6 +33,7 @@ export default function About() {
           Read more
         </a>
       </div>
+      <NextStepLinks />
     </div>
   );
 }
