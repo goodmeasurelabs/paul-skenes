@@ -4,6 +4,7 @@ import NextStart from "./components/NextStart";
 import NewsFeed from "./components/NewsFeed";
 import QuickStatsOverlay from "./components/QuickStatsOverlay";
 import CTALink from "./components/CTALink";
+import QuickLinks from "./components/QuickLinks";
 import GamePromoCard from "./components/GamePromoCard";
 import "./Skenes.css";
 
@@ -73,6 +74,9 @@ export default function Home() {
 
         <GamePromoCard />
       </div>
+
+      {/* Quick links to the main sections */}
+      <QuickLinks />
 
       {/* Next Game */}
       <NextStart />
