@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { trackGamePlay } from '@/lib/analytics';
+import NextStepPanel from './NextStepPanel';
 
 const questions = [
   {
@@ -56,7 +57,7 @@ const questions = [
   },
 ];
 
-export default function TriviaGame() {
+export default function TriviaGame({ onPlayOther }: { onPlayOther: () => void }) {
   const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [score, setScore] = useState(0);
@@ -104,6 +105,7 @@ export default function TriviaGame() {
         >
           Play Again
         </button>
+        <NextStepPanel otherGameName="the Pitching Challenge" otherGameType="pitching_challenge" onPlayOther={onPlayOther} />
       </div>
     );
   }
