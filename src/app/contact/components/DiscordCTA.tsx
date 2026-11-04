@@ -1,9 +1,11 @@
 import Image from "next/image";
 import DiscordLogo from "../../../../public/discord-logo.png";
 export default function DiscordCTA() {
+  const invite = process.env.NEXT_PUBLIC_DISCORD_INVITE_CODE;
+  if (!invite) return null;
   return (
     <a
-      href={`https://discord.gg/${process.env.NEXT_PUBLIC_DISCORD_INVITE_CODE}`}
+      href={`https://discord.gg/${invite}`}
       target="_blank"
       rel="noopener noreferrer"
     >

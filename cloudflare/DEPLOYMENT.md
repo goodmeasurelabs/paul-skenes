@@ -1,15 +1,11 @@
-# Cloudflare deployment
+# Cloudflare Worker releases
 
-Production domain: https://paulskenes.com/
+Production: https://paulskenes.com/ on the existing `gm-paulskenes` Worker in account `ee641897681cddb2b23b18fb4b639034`.
 
-Project: `gm-paulskenes` (Workers) in David’s Cloudflare account.
+Pull requests install locked dependencies, test the metadata guard, build with supported Next 16.3.8 and OpenNext 1.20.8, and dry-run the Worker bundle. Pushes to current `main` rebuild and deploy with the existing inherited `CLOUDFLARE_DEPLOY_TOKEN`; deployment secrets are unavailable to PR validation. `--keep-vars` preserves existing runtime variables and encrypted service secrets. The Wrangler configuration has no routes and does not manage custom domains.
 
-The **Deploy Cloudflare** workflow is prepared, not activated or production-tested through GitHub Actions. Activation requires this workflow on the default branch and a separately approved encrypted `CLOUDFLARE_DEPLOY_TOKEN` in the `cloudflare-production` environment or repository. No credential values are committed. The temporary migration CLI credential is not a GitHub credential.
+Before upload, the workflow reads the fixed account/Worker, current deployment and rollback version IDs, custom domains, zone Worker routes, compatibility date/flags, and binding names/types. It refuses an unrelated domain or an unreviewed non-text runtime binding. No secret or configuration values enter logs or artifacts. After upload it requires this commit's version annotation, 100% traffic, and unchanged domain/route/binding metadata. Sanitized before/after evidence is retained for 30 days. HTTPS is checked independently afterward.
 
-Existing service secrets remain encrypted on the Worker. Workers configuration does not manage domains in this workflow; `--keep-vars` preserves service variables. Pages uses Wrangler Direct Upload and preserves existing project identities. Existing tracking IDs and feedback routing are retained.
+This PR prepares release automation; it does not prove a successful production release or authorize changing DNS, runtime secrets, or provider integrations. Root coordinates review and the first merge/release. Retain previous Cloudflare versions and original provider hosting for rollback.
 
-This migration source preserves the previously verified Cloudflare production configuration. Original provider hosting is retained for rollback. The prepared workflow has not run a new production deployment.
-
-Paul Skenes requires `NEXT_PUBLIC_MEASUREMENT_ID` set to its existing public measurement ID before building in CI; its original missing news API key and mobile navigation limitation are unchanged.
-
-The reconciliation draft adds validation on pull requests and deployment after a successful push to `main`; see [release verification](RELEASE.md). This is prepared automation, not evidence of a successful production Actions run.
+Required public Actions variables, recovered from the existing live site: `NEXT_PUBLIC_MEASUREMENT_ID=G-BCJ9PYCM32` and `NEXT_PUBLIC_EMAIL=dofdope@gmail.com`. Discord is optional and omitted when no invitation exists; no invite was invented. The original news API key is still absent and the existing news endpoint limitation is unchanged.
