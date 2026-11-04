@@ -4,6 +4,8 @@ import NextStart from "./components/NextStart";
 import NewsFeed from "./components/NewsFeed";
 import QuickStatsOverlay from "./components/QuickStatsOverlay";
 import CTALink from "./components/CTALink";
+import QuickLinks from "./components/QuickLinks";
+import GamePromoCard from "./components/GamePromoCard";
 import "./Skenes.css";
 
 export const metadata: Metadata = {
@@ -69,7 +71,12 @@ export default function Home() {
         <div className="flex justify-center mt-6">
           <CTALink href="/game-schedule" text="See his next start →" location="home_hero" />
         </div>
+
+        <GamePromoCard />
       </div>
+
+      {/* Quick links to the main sections */}
+      <QuickLinks />
 
       {/* Next Game */}
       <NextStart />

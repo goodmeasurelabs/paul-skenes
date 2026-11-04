@@ -38,7 +38,9 @@ export default function GamesClient() {
       </div>
 
       <div className="flex justify-center">
-        {tab === 'pitch' ? <PitchingGame /> : <TriviaGame />}
+        {tab === 'pitch'
+          ? <PitchingGame onPlayOther={() => setTab('trivia')} />
+          : <TriviaGame onPlayOther={() => setTab('pitch')} />}
       </div>
     </div>
   );
