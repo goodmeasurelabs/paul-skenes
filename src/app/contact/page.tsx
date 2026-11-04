@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import EmailMeBox from "./components/EmailMeBox";
+import NextStepLinks, { SHOW_CONTACT_NEXT_STEPS } from "./components/NextStepLinks";
 
 export const metadata: Metadata = {
   title: "Contact & Domain Inquiries | PaulSkenes.com",
@@ -12,6 +13,8 @@ export default function Contact() {
   return (
     <div className="w-full max-w-3xl mx-auto px-4 flex flex-col items-center gap-8 pb-16">
       <h1 className="text-slate-300 text-4xl md:text-7xl font-serif">Contact</h1>
+
+      {SHOW_CONTACT_NEXT_STEPS && <NextStepLinks />}
 
       {/* Domain inquiry — primary */}
       <section className="w-full bg-gradient-to-br from-yellow-500/10 to-yellow-600/5 border border-yellow-500/40 rounded-xl p-6 md:p-8 text-left">
